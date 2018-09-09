@@ -8,9 +8,8 @@ var ascoltatore = {
   pubsubCollection: 'ascoltatori',
   mongo: {}
 };
-
 var settings = {
-  port: process.env.PORT,
+  port: parseInt(process.env.PORT),
 }
 
 var server = new mosca.Server(settings);
