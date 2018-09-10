@@ -1,6 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
 const mosca = require('mosca');
-
 var ascoltatore = {
   //using ascoltatore
   type: 'mongo',
@@ -10,19 +9,19 @@ var ascoltatore = {
 };
 var settings = {
   port: parseInt(process.env.PORT),
-}
+};
 
 var server = new mosca.Server(settings);
 
 server.on('clientConnected', function(client) {
   console.log('client connected', client.id);
-})
+});
 
 server.on('published', function(packet, client) {
   console.log('Published', packet.payload);
-})
+});
 
 server.on('ready', setup);
 function setup() {
-  console.log('Mosca server is up and running');
+  console.log('Mosca server is up and running on port ' + process.env.PORT);
 }
