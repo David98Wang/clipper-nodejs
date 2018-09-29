@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require('dotenv').config();
 const mosca = require('mosca');
 var ascoltatore = {
@@ -26,33 +25,3 @@ server.on('ready', setup);
 function setup() {
   console.log('Mosca server is up and running on port ' + process.env.PORT);
 }
-=======
-require('dotenv').config()
-const mosca = require('mosca');
-
-var ascoltatore = {
-  //using ascoltatore
-  type: 'mongo',
-  url: 'mongodb://root:NqE1JckRnByi@ec2-52-32-88-154.us-west-2.compute.amazonaws.com/mqtt',
-  pubsubCollection: 'ascoltatori',
-  mongo: {}
-};
-var settings = {
-  port: parseInt(process.env.PORT),
-}
-
-var server = new mosca.Server(settings);
-
-server.on('clientConnected', function(client) {
-  console.log('client connected', client.id);
-})
-
-server.on('published', function(packet, client) {
-  console.log('Published', packet.payload);
-})
-
-server.on('ready', setup);
-function setup() {
-  console.log('Mosca server is up and running');
-}
->>>>>>> 23dc42c90ee4e80dc24408f415c45a24bf44b0b0
